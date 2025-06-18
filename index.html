@@ -18,6 +18,15 @@
     <link rel="stylesheet" href="assets/css/animated.css">
     <link rel="stylesheet" href="assets/css/owl.css">
     <link rel="stylesheet" href="assets/css/custom.css">
+    
+    <!-- EmailJS Integration -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function() {
+        // Add your EmailJS public key here
+        emailjs.init("yFgi_XrZSpDVrqyK1");
+      })();
+    </script>
 </head>
 
 <body>
@@ -78,7 +87,56 @@
       </div>
     </div>
   </header>
-    <div class="main-banner" id="top">
+  <!-- <div class="main-banner" id="top">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="row">
+            <div class="col-lg-6 align-self-center">
+              <div class="owl-carousel owl-banner">
+                <div class="item header-text">
+                    <h6>Welcome to Sutex</h6>
+                    <h2>Innovate. Develop. Grow. <em>Your Digital Future</em> Starts <span>Here</span>.</h2>
+                    <p>Sutex is an MSME-registered firm, specializing in cutting-edge <strong>web and app development</strong> for businesses of all sizes, from startups to enterprises. Let's build something amazing together!</p>
+                    <div class="down-buttons">
+                        <div class="main-blue-button-hover">
+                            <a href="#contact">Get Your Free Project Consultation</a>
+                        </div>
+                        <div class="call-button">
+                            <a href="#"><i class="fa fa-phone"></i> +91-94839 32100</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="item header-text">
+                  <h6>Custom Web Development</h6>
+                  <h2>Build a Stunning and <em>Functional Website</em> for <span>Your Business</span></h2>
+                  <p>From captivating front-end designs to robust back-end systems, we deliver scalable and secure web solutions that drive engagement and growth. Let's make your online presence impactful.</p> <div class="down-buttons">
+                    <div class="main-blue-button-hover">
+                      <a href="#services">Explore Web Services</a>
+                    </div>
+                    <div class="call-button">
+                      <a href="#"><i class="fa fa-phone"></i> +91-94839 32100</a> </div>
+                  </div>
+                </div>
+                <div class="item header-text">
+                  <h6>Mobile App Excellence</h6>
+                  <h2>Transform Your Ideas into <em>Powerful Mobile Apps</em> for <span>iOS & Android</span></h2>
+                  <p>Reach your audience wherever they are with intuitive, high-performance mobile applications. We design and develop native and cross-platform apps that provide exceptional user experiences.</p> <div class="down-buttons">
+                    <div class="main-blue-button-hover">
+                      <a href="#services">Discover Mobile Services</a>
+                    </div>
+                    <div class="call-button">
+                      <a href="#"><i class="fa fa-phone"></i> +91-94839 32100</a> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  <div class="main-banner" id="top">
       <div class="container">
           <div class="row">
               <div class="col-lg-12">
@@ -133,7 +191,6 @@
           </div>
       </div>
   </div>
-
   <div id="services" class="our-services section">
     <div class="services-right-dec">
       <img src="assets/images/services-right-dec.png" alt="">
@@ -578,9 +635,14 @@
           <div class="inner-content">
             <div class="row">
               <div class="col-lg-10 offset-lg-1">
-                <h2>Stay Updated with Sutex!</h2> <form id="subscribe" action="" method="get">
-                  <input type="text" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required=""> <button type="submit" id="form-submit" class="main-button ">Subscribe</button>
+                <h2>Stay Updated with Sutex!</h2> 
+                <form id="mainSubscribeForm" action="javascript:void(0);" method="get">
+                  <input type="text" name="email" id="main-subscribe-email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required=""> 
+                  <button type="submit" id="main-subscribe-submit" class="main-button">Subscribe</button>
                 </form>
+                <div id="main-subscribe-success" class="mt-2 text-light" style="display:none;">
+                  Thank you for subscribing to our newsletter!
+                </div>
               </div>
             </div>
           </div>
@@ -602,7 +664,8 @@
           </div>
         </div>
         <div class="col-lg-5 align-self-center">
-          <form id="contact" action="" method="post"> <div class="row">
+          <form id="contactForm" action="javascript:void(0);" method="post"> 
+            <div class="row">
               <div class="col-lg-12">
                 <fieldset>
                   <input type="name" name="name" id="name" placeholder="Full Name" autocomplete="on" required> </fieldset>
@@ -624,6 +687,14 @@
                 <fieldset>
                   <button type="submit" id="form-submit" class="main-button">Send Message</button>
                 </fieldset>
+              </div>
+              <div class="col-lg-12 mt-3">
+                <div id="form-message-success" class="alert alert-success" style="display:none;">
+                  Your message was sent successfully. Thank you!
+                </div>
+                <div id="form-message-error" class="alert alert-danger" style="display:none;">
+                  Oops! Something went wrong. Please try again later.
+                </div>
               </div>
             </div>
           </form>
@@ -680,9 +751,13 @@
         <div class="col-lg-3">
           <div class="subscribe-newsletters footer-item">
             <h4>Stay Connected</h4> <p>Subscribe to our newsletter for the latest in web and mobile trends!</p>
-            <form action="#" method="get">
-              <input type="email" name="email" id="email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required=""> <button type="submit" id="form-submit" class="main-button "><i class="fa fa-paper-plane-o"></i></button>
+            <form id="subscribeForm" action="javascript:void(0);" method="get">
+              <input type="email" name="email" id="subscribe-email" pattern="[^ @]*@[^ @]*" placeholder="Your Email" required=""> 
+              <button type="submit" id="subscribe-submit" class="main-button "><i class="fa fa-paper-plane-o"></i></button>
             </form>
+            <div id="subscribe-success" class="mt-2 text-success" style="display:none; font-size: 0.8rem;">
+              Subscribed successfully!
+            </div>
           </div>
         </div>
         <div class="col-lg-12">
@@ -729,6 +804,127 @@
     document.getElementById('js-preloader').style.display = 'none';
   });
 </script>
-
+  
+  <!-- Contact Form Script -->
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Get form data
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const message = document.getElementById('message').value;
+      
+      // Show loading state
+      const submitButton = document.getElementById('form-submit');
+      const originalText = submitButton.innerHTML;
+      submitButton.disabled = true;
+      submitButton.innerHTML = 'Sending...';
+      
+      // Prepare template parameters
+      const templateParams = {
+        from_name: name,
+        from_email: email,
+        phone_number: phone,
+        message: message
+      };
+      
+      // Send email using EmailJS
+      emailjs.send('service_9kctd8i', 'template_srefn0q', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          document.getElementById('form-message-success').style.display = 'block';
+          document.getElementById('form-message-error').style.display = 'none';
+          document.getElementById('contactForm').reset();
+        }, function(error) {
+          console.log('FAILED...', error);
+          document.getElementById('form-message-success').style.display = 'none';
+          document.getElementById('form-message-error').style.display = 'block';
+        })
+        .finally(function() {
+          // Reset button state
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalText;
+        });
+    });
+    
+    // Newsletter subscription form
+    document.getElementById('subscribeForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Get email
+      const email = document.getElementById('subscribe-email').value;
+      
+      // Show loading state
+      const submitButton = document.getElementById('subscribe-submit');
+      submitButton.disabled = true;
+      
+      // Prepare template parameters
+      const templateParams = {
+        subscriber_email: email
+      };
+      
+      // Send email using EmailJS
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_NEWSLETTER_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          document.getElementById('subscribe-success').style.display = 'block';
+          document.getElementById('subscribeForm').reset();
+          
+          // Hide success message after 3 seconds
+          setTimeout(function() {
+            document.getElementById('subscribe-success').style.display = 'none';
+          }, 3000);
+        }, function(error) {
+          console.log('FAILED...', error);
+          alert('Failed to subscribe. Please try again later.');
+        })
+        .finally(function() {
+          // Reset button state
+          submitButton.disabled = false;
+        });
+    });
+    
+    // Main subscribe form
+    document.getElementById('mainSubscribeForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Get email
+      const email = document.getElementById('main-subscribe-email').value;
+      
+      // Show loading state
+      const submitButton = document.getElementById('main-subscribe-submit');
+      const originalText = submitButton.innerHTML;
+      submitButton.disabled = true;
+      submitButton.innerHTML = 'Subscribing...';
+      
+      // Prepare template parameters
+      const templateParams = {
+        subscriber_email: email
+      };
+      
+      // Send email using EmailJS
+      emailjs.send('YOUR_SERVICE_ID', 'YOUR_NEWSLETTER_TEMPLATE_ID', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          document.getElementById('main-subscribe-success').style.display = 'block';
+          document.getElementById('mainSubscribeForm').reset();
+          
+          // Hide success message after 3 seconds
+          setTimeout(function() {
+            document.getElementById('main-subscribe-success').style.display = 'none';
+          }, 3000);
+        }, function(error) {
+          console.log('FAILED...', error);
+          alert('Failed to subscribe. Please try again later.');
+        })
+        .finally(function() {
+          // Reset button state
+          submitButton.disabled = false;
+          submitButton.innerHTML = originalText;
+        });
+    });
+  </script>
 </body>
 </html>
