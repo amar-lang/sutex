@@ -97,7 +97,7 @@
 
 
   // Menu elevator animation
-  $('.scroll-to-section a[href*=\\#]:not([href=\\#])').on('click', function() {
+  $('.scroll-to-section a[href*=\\#]:not([href=\\#]), .main-red-button-hover a[href*=\\#]:not([href=\\#]), .main-blue-button-hover a[href*=\\#]:not([href=\\#])').on('click', function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
@@ -128,15 +128,19 @@
           })
           $(this).addClass('active');
         
-          var target = this.hash,
-          menu = target;
-          var target = $(this.hash);
-          $('html, body').stop().animate({
-              scrollTop: (target.offset().top) + 1
-          }, 500, 'swing', function () {
-              window.location.hash = target;
-              $(document).on("scroll", onScroll);
-          });
+          var target = this.hash;
+          if (!target) return;
+          
+          var $target = $(target);
+          
+          if ($target.length) {
+              $('html, body').stop().animate({
+                  scrollTop: ($target.offset().top) + 1
+              }, 500, 'swing', function () {
+                  window.location.hash = target;
+                  $(document).on("scroll", onScroll);
+              });
+          }
       });
   });
 
@@ -145,6 +149,12 @@
       $('.nav a').each(function () {
           var currLink = $(this);
           var refElement = $(currLink.attr("href"));
+          
+          // Skip if the href doesn't point to an anchor or the element doesn't exist
+          if (!currLink.attr("href") || currLink.attr("href").charAt(0) !== '#' || !refElement.length) {
+              return true; // Skip to next iteration
+          }
+          
           if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
               $('.nav ul li a').removeClass("active");
               currLink.addClass("active");
