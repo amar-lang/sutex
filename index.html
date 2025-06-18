@@ -10,46 +10,83 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    <title>Sutex - Web & Mobile App Development</title> <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <title>Sutex - Web & Mobile App Development</title>
+    
+    <!-- Critical CSS for initial rendering -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/templatemo-onix-digital.css">
-    <link rel="stylesheet" href="assets/css/animated.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
+    
+    <!-- Preload important assets -->
+    <link rel="preload" href="assets/images/logo.png" as="image">
+    
+    <!-- Inline styles for preloader to ensure it's visible -->
+    <style>
+      .js-preloader {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .preloader-inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .sutex-loader {
+        display: flex;
+        font-size: 40px;
+        font-weight: bold;
+        font-family: 'Segoe UI', sans-serif;
+        gap: 12px;
+        letter-spacing: 4px;
+      }
+      .sutex-loader span {
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: fadeSlide 2.5s ease-in-out infinite;
+        animation-delay: calc(0.2s * var(--i));
+      }
+      @keyframes fadeSlide {
+        0% {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        30% {
+          opacity: 1;
+          transform: translateX(0px);
+        }
+        70% {
+          opacity: 1;
+          transform: translateX(0px);
+        }
+        100% {
+          opacity: 0;
+          transform: translateX(20px);
+        }
+      }
+    </style>
     
     <!-- EmailJS Integration -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js" defer></script>
     <script type="text/javascript">
-      (function() {
+      document.addEventListener('DOMContentLoaded', function() {
         // Add your EmailJS public key here
         emailjs.init("yFgi_XrZSpDVrqyK1");
-      })();
+      });
     </script>
 </head>
 
 <body>
+  <!-- Ensure preloader is visible immediately -->
+  <script>
+    // Make sure preloader is visible
+    document.getElementById('js-preloader').style.display = 'flex';
+  </script>
 
-  <!-- <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div> -->
-  <!-- <div id="js-preloader" class="js-preloader">
-  <div class="sutex-loader">
-    <span>S</span>
-    <span>u</span>
-    <span>t</span>
-    <span>e</span>
-    <span>x</span>
-  </div>
-</div> -->
   <div id="js-preloader" class="js-preloader">
     <div class="preloader-inner">
       <div class="sutex-loader">
@@ -61,7 +98,6 @@
       </div>
     </div>
   </div>
-
 
   <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
     <div class="container">
@@ -198,11 +234,11 @@
   </div>
   <div id="services" class="our-services section">
     <div class="services-right-dec">
-      <img src="assets/images/services-right-dec.png" alt="">
+      <img src="assets/images/services-right-dec.png" alt="" loading="lazy">
     </div>
     <div class="container">
       <div class="services-left-dec">
-        <img src="assets/images/services-left-dec.png" alt="">
+        <img src="assets/images/services-left-dec.png" alt="" loading="lazy">
       </div>
       <div class="row">
         <div class="col-lg-6 offset-lg-3">
@@ -215,35 +251,35 @@
         <div class="col-lg-12">
           <div class="owl-carousel owl-services">
             <div class="item">
-              <h4>Responsive Web Development</h4> <div class="icon"><img src="assets/images/service-icon-01.png" alt=""></div>
+              <h4>Responsive Web Development</h4> <div class="icon"><img src="assets/images/service-icon-01.png" alt="" loading="lazy"></div>
               <p>Crafting dynamic and responsive websites that look great on any device.</p>
             </div>
             <div class="item">
-              <h4>Custom Mobile App Development</h4> <div class="icon"><img src="assets/images/service-icon-02.png" alt=""></div>
+              <h4>Custom Mobile App Development</h4> <div class="icon"><img src="assets/images/service-icon-02.png" alt="" loading="lazy"></div>
               <p>Developing bespoke iOS and Android applications tailored to your vision.</p>
             </div>
             <div class="item">
-              <h4>E-commerce Solutions</h4> <div class="icon"><img src="assets/images/service-icon-03.png" alt=""></div>
+              <h4>E-commerce Solutions</h4> <div class="icon"><img src="assets/images/service-icon-03.png" alt="" loading="lazy"></div>
               <p>Building secure and user-friendly online stores to boost your sales.</p>
             </div>
             <div class="item">
-              <h4>UI/UX Design</h4> <div class="icon"><img src="assets/images/service-icon-04.png" alt=""></div>
+              <h4>UI/UX Design</h4> <div class="icon"><img src="assets/images/service-icon-04.png" alt="" loading="lazy"></div>
               <p>Creating intuitive and engaging user interfaces for optimal experience.</p>
             </div>
             <div class="item">
-              <h4>Backend Development & APIs</h4> <div class="icon"><img src="assets/images/service-icon-01.png" alt=""></div>
+              <h4>Backend Development & APIs</h4> <div class="icon"><img src="assets/images/service-icon-01.png" alt="" loading="lazy"></div>
               <p>Robust backend systems and seamless API integrations for powerful applications.</p>
             </div>
             <div class="item">
-              <h4>Progressive Web Apps (PWAs)</h4> <div class="icon"><img src="assets/images/service-icon-02.png" alt=""></div>
+              <h4>Progressive Web Apps (PWAs)</h4> <div class="icon"><img src="assets/images/service-icon-02.png" alt="" loading="lazy"></div>
               <p>Delivering app-like experiences directly through web browsers.</p>
             </div>
             <div class="item">
-              <h4>Maintenance & Support</h4> <div class="icon"><img src="assets/images/service-icon-03.png" alt=""></div>
+              <h4>Maintenance & Support</h4> <div class="icon"><img src="assets/images/service-icon-03.png" alt="" loading="lazy"></div>
               <p>Ensuring your digital assets run smoothly with ongoing support.</p>
             </div>
             <div class="item">
-              <h4>Digital Strategy Consulting</h4> <div class="icon"><img src="assets/images/service-icon-04.png" alt=""></div>
+              <h4>Digital Strategy Consulting</h4> <div class="icon"><img src="assets/images/service-icon-04.png" alt="" loading="lazy"></div>
               <p>Guiding your digital journey with expert advice and strategic planning.</p>
             </div>
           </div>
@@ -254,7 +290,7 @@
 
   <div id="about" class="about-us section">
     <div class="about-right-dec">
-      <img src="assets/images/services-right-dec.png" alt="">
+      <img src="assets/images/services-right-dec.png" alt="" loading="lazy">
     </div>
     <div class="container">
       <div class="about-left-dec">
@@ -281,7 +317,7 @@
         <div class="row mt-4 align-items-center">
             <div class="col-lg-6">
                 <div class="left-image">
-                    <img src="assets/images/about-left-image.png" alt="Team working on web and mobile development" class="img-fluid rounded">
+                    <img src="assets/images/about-left-image.png" alt="Team working on web and mobile development" class="img-fluid rounded" loading="lazy">
                 </div>
             </div>
             <div class="col-lg-6">
@@ -291,7 +327,7 @@
                             <div class="fact-item text-center">
                                 <div class="count-area-content">
                                     <div class="icon">
-                                        <img src="assets/images/service-icon-01.png" alt="">
+                                        <img src="assets/images/service-icon-01.png" alt="" loading="lazy">
                                     </div>
                                     <div class="count-digit">2</div>
                                     <div class="count-title">Successful Projects</div>
@@ -303,7 +339,7 @@
                             <div class="fact-item text-center">
                                 <div class="count-area-content">
                                     <div class="icon">
-                                        <img src="assets/images/service-icon-02.png" alt="">
+                                        <img src="assets/images/service-icon-02.png" alt="" loading="lazy">
                                     </div>
                                     <div class="count-digit">Global</div>
                                     <div class="count-title">Client Reach</div>
@@ -315,7 +351,7 @@
                             <div class="fact-item text-center">
                                 <div class="count-area-content">
                                     <div class="icon">
-                                        <img src="assets/images/service-icon-03.png" alt="">
+                                        <img src="assets/images/service-icon-03.png" alt="" loading="lazy">
                                     </div>
                                     <div class="count-digit">Udyam</div>
                                     <div class="count-title">Registered Startup</div>
@@ -406,7 +442,7 @@
 
   <div id="technologies" class="about-us section">
     <div class="about-right-dec">
-      <img src="assets/images/services-right-dec.png" alt="">
+      <img src="assets/images/services-right-dec.png" alt="" loading="lazy">
     </div>
     <div class="container">
       
@@ -428,7 +464,7 @@
                 <div class="fact-item text-center h-100">
                     <div class="count-area-content">
                         <div class="icon">
-                            <img src="assets/images/service-icon-01.png" alt="">
+                            <img src="assets/images/service-icon-01.png" alt="" loading="lazy">
                         </div>
                         <div class="count-title">Frontend</div>
                         <ul class="list-unstyled mt-3">
@@ -444,7 +480,7 @@
                 <div class="fact-item text-center h-100">
                     <div class="count-area-content">
                         <div class="icon">
-                            <img src="assets/images/service-icon-02.png" alt="">
+                            <img src="assets/images/service-icon-02.png" alt="" loading="lazy">
                         </div>
                         <div class="count-title">Backend</div>
                         <ul class="list-unstyled mt-3">
@@ -460,7 +496,7 @@
                 <div class="fact-item text-center h-100">
                     <div class="count-area-content">
                         <div class="icon">
-                            <img src="assets/images/service-icon-03.png" alt="">
+                            <img src="assets/images/service-icon-03.png" alt="" loading="lazy">
                         </div>
                         <div class="count-title">Mobile</div>
                         <ul class="list-unstyled mt-3">
@@ -476,7 +512,7 @@
                 <div class="fact-item text-center h-100">
                     <div class="count-area-content">
                         <div class="icon">
-                            <img src="assets/images/service-icon-04.png" alt="">
+                            <img src="assets/images/service-icon-04.png" alt="" loading="lazy">
                         </div>
                         <div class="count-title">Database & Cloud</div>
                         <ul class="list-unstyled mt-3">
@@ -571,10 +607,10 @@
 
   <div id="pricing" class="pricing-tables">
     <div class="tables-left-dec">
-      <img src="assets/images/tables-left-dec.png" alt="">
+      <img src="assets/images/tables-left-dec.png" alt="" loading="lazy">
     </div>
     <div class="tables-right-dec">
-      <img src="assets/images/tables-right-dec.png" alt="">
+      <img src="assets/images/tables-right-dec.png" alt="" loading="lazy">
     </div>
     <div class="container">
       <div class="row">
@@ -707,15 +743,15 @@
       </div>
     </div>
     <div class="contact-dec">
-      <img src="assets/images/contact-dec.png" alt="">
+      <img src="assets/images/contact-dec.png" alt="" loading="lazy">
     </div>
     <div class="contact-left-dec">
-      <img src="assets/images/contact-left-dec.png" alt="">
+      <img src="assets/images/contact-left-dec.png" alt="" loading="lazy">
     </div>
   </div>
 
   <div class="footer-dec">
-    <img src="assets/images/footer-dec.png" alt="">
+    <img src="assets/images/footer-dec.png" alt="" loading="lazy">
   </div>
 
   <footer>
@@ -777,158 +813,171 @@
     </div>
   </footer>
 
+  <!-- Non-critical CSS loaded after page render -->
+  <link rel="stylesheet" href="assets/css/fontawesome.css">
+  <link rel="stylesheet" href="assets/css/animated.css">
+  <link rel="stylesheet" href="assets/css/owl.css">
+  <link rel="stylesheet" href="assets/css/custom.css">
 
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/animation.js"></script>
-  <script src="assets/js/imagesloaded.js"></script>
-  <script src="assets/js/custom.js"></script>
+  <!-- Scripts with defer attribute to not block rendering -->
+  <script src="vendor/jquery/jquery.min.js" defer></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js" defer></script>
+  <script src="assets/js/owl-carousel.js" defer></script>
+  <script src="assets/js/animation.js" defer></script>
+  <script src="assets/js/imagesloaded.js" defer></script>
+  <script src="assets/js/custom.js" defer></script>
 
   <script>
   // Acc
-    $(document).on("click", ".naccs .menu div", function() {
-      var numberIndex = $(this).index();
+    document.addEventListener('DOMContentLoaded', function() {
+      $(document).on("click", ".naccs .menu div", function() {
+        var numberIndex = $(this).index();
 
-      if (!$(this).is("active")) {
-          $(".naccs .menu div").removeClass("active");
-          $(".naccs ul li").removeClass("active");
+        if (!$(this).is("active")) {
+            $(".naccs .menu div").removeClass("active");
+            $(".naccs ul li").removeClass("active");
 
-          $(this).addClass("active");
-          $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
+            $(this).addClass("active");
+            $(".naccs ul").find("li:eq(" + numberIndex + ")").addClass("active");
 
-          var listItemHeight = $(".naccs ul")
-            .find("li:eq(" + numberIndex + ")")
-            .innerHeight();
-          $(".naccs ul").height(listItemHeight + "px");
-        }
+            var listItemHeight = $(".naccs ul")
+              .find("li:eq(" + numberIndex + ")")
+              .innerHeight();
+            $(".naccs ul").height(listItemHeight + "px");
+          }
+      });
     });
   </script>
   <script>
-  window.addEventListener('load', function () {
-    document.getElementById('js-preloader').style.display = 'none';
+  // Show content as soon as DOM is ready instead of waiting for all resources
+  document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(function() {
+      document.getElementById('js-preloader').style.display = 'none';
+    }, 5000); // Increased timeout to 5 seconds so loader is visible longer
   });
 </script>
   
   <!-- Contact Form Script -->
   <script>
-    document.getElementById('contact').addEventListener('submit', function(event) {
-      event.preventDefault();
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('contact').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Get form data
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+        
+        // Show loading state
+        const submitButton = document.getElementById('form-submit');
+        const originalText = submitButton.innerHTML;
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Sending...';
+        
+        // Prepare template parameters
+        const templateParams = {
+          from_name: name,
+          from_email: email,
+          phone_number: phone,
+          message: message
+        };
+        
+        // Send email using EmailJS
+        emailjs.send('service_9kctd8i', 'template_srefn0q', templateParams)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            document.getElementById('form-message-success').style.display = 'block';
+            document.getElementById('form-message-error').style.display = 'none';
+            document.getElementById('contact').reset();
+          }, function(error) {
+            console.log('FAILED...', error);
+            document.getElementById('form-message-success').style.display = 'none';
+            document.getElementById('form-message-error').style.display = 'block';
+          })
+          .finally(function() {
+            // Reset button state
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalText;
+          });
+      });
       
-      // Get form data
-      const name = document.getElementById('name').value;
-      const email = document.getElementById('email').value;
-      const phone = document.getElementById('phone').value;
-      const message = document.getElementById('message').value;
+      // Newsletter subscription form
+      document.getElementById('subscribeForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Get email
+        const email = document.getElementById('subscribe-email').value;
+        
+        // Show loading state
+        const submitButton = document.getElementById('subscribe-submit');
+        submitButton.disabled = true;
+        
+        // Prepare template parameters
+        const templateParams = {
+          subscriber_email: email
+        };
+        
+        // Send email using EmailJS
+        emailjs.send('service_9kctd8i', 'template_3dep738', templateParams)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            document.getElementById('subscribe-success').style.display = 'block';
+            document.getElementById('subscribeForm').reset();
+            
+            // Hide success message after 3 seconds
+            setTimeout(function() {
+              document.getElementById('subscribe-success').style.display = 'none';
+            }, 3000);
+          }, function(error) {
+            console.log('FAILED...', error);
+            alert('Failed to subscribe. Please try again later.');
+          })
+          .finally(function() {
+            // Reset button state
+            submitButton.disabled = false;
+          });
+      });
       
-      // Show loading state
-      const submitButton = document.getElementById('form-submit');
-      const originalText = submitButton.innerHTML;
-      submitButton.disabled = true;
-      submitButton.innerHTML = 'Sending...';
-      
-      // Prepare template parameters
-      const templateParams = {
-        from_name: name,
-        from_email: email,
-        phone_number: phone,
-        message: message
-      };
-      
-      // Send email using EmailJS
-      emailjs.send('service_9kctd8i', 'template_srefn0q', templateParams)
-        .then(function(response) {
-          console.log('SUCCESS!', response.status, response.text);
-          document.getElementById('form-message-success').style.display = 'block';
-          document.getElementById('form-message-error').style.display = 'none';
-          document.getElementById('contact').reset();
-        }, function(error) {
-          console.log('FAILED...', error);
-          document.getElementById('form-message-success').style.display = 'none';
-          document.getElementById('form-message-error').style.display = 'block';
-        })
-        .finally(function() {
-          // Reset button state
-          submitButton.disabled = false;
-          submitButton.innerHTML = originalText;
-        });
-    });
-    
-    // Newsletter subscription form
-    document.getElementById('subscribeForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      // Get email
-      const email = document.getElementById('subscribe-email').value;
-      
-      // Show loading state
-      const submitButton = document.getElementById('subscribe-submit');
-      submitButton.disabled = true;
-      
-      // Prepare template parameters
-      const templateParams = {
-        subscriber_email: email
-      };
-      
-      // Send email using EmailJS
-      emailjs.send('service_9kctd8i', 'template_3dep738', templateParams)
-        .then(function(response) {
-          console.log('SUCCESS!', response.status, response.text);
-          document.getElementById('subscribe-success').style.display = 'block';
-          document.getElementById('subscribeForm').reset();
-          
-          // Hide success message after 3 seconds
-          setTimeout(function() {
-            document.getElementById('subscribe-success').style.display = 'none';
-          }, 3000);
-        }, function(error) {
-          console.log('FAILED...', error);
-          alert('Failed to subscribe. Please try again later.');
-        })
-        .finally(function() {
-          // Reset button state
-          submitButton.disabled = false;
-        });
-    });
-    
-    // Main subscribe form
-    document.getElementById('mainSubscribeForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      // Get email
-      const email = document.getElementById('main-subscribe-email').value;
-      
-      // Show loading state
-      const submitButton = document.getElementById('main-subscribe-submit');
-      const originalText = submitButton.innerHTML;
-      submitButton.disabled = true;
-      submitButton.innerHTML = 'Subscribing...';
-      
-      // Prepare template parameters
-      const templateParams = {
-        subscriber_email: email
-      };
-      
-      // Send email using EmailJS
-      emailjs.send('service_9kctd8i', 'template_3dep738', templateParams)
-        .then(function(response) {
-          console.log('SUCCESS!', response.status, response.text);
-          document.getElementById('main-subscribe-success').style.display = 'block';
-          document.getElementById('mainSubscribeForm').reset();
-          
-          // Hide success message after 3 seconds
-          setTimeout(function() {
-            document.getElementById('main-subscribe-success').style.display = 'none';
-          }, 3000);
-        }, function(error) {
-          console.log('FAILED...', error);
-          alert('Failed to subscribe. Please try again later.');
-        })
-        .finally(function() {
-          // Reset button state
-          submitButton.disabled = false;
-          submitButton.innerHTML = originalText;
-        });
+      // Main subscribe form
+      document.getElementById('mainSubscribeForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Get email
+        const email = document.getElementById('main-subscribe-email').value;
+        
+        // Show loading state
+        const submitButton = document.getElementById('main-subscribe-submit');
+        const originalText = submitButton.innerHTML;
+        submitButton.disabled = true;
+        submitButton.innerHTML = 'Subscribing...';
+        
+        // Prepare template parameters
+        const templateParams = {
+          subscriber_email: email
+        };
+        
+        // Send email using EmailJS
+        emailjs.send('service_9kctd8i', 'template_3dep738', templateParams)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            document.getElementById('main-subscribe-success').style.display = 'block';
+            document.getElementById('mainSubscribeForm').reset();
+            
+            // Hide success message after 3 seconds
+            setTimeout(function() {
+              document.getElementById('main-subscribe-success').style.display = 'none';
+            }, 3000);
+          }, function(error) {
+            console.log('FAILED...', error);
+            alert('Failed to subscribe. Please try again later.');
+          })
+          .finally(function() {
+            // Reset button state
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalText;
+          });
+      });
     });
   </script>
 </body>
